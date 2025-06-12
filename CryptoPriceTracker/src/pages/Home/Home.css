@@ -71,3 +71,12 @@
 .market-cap{
     text-align: right;
 }
+.table-layout:last-child{
+    border: none;
+}
+
+.table-layout div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
