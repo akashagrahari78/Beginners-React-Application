@@ -16,8 +16,4 @@ createRoot(document.getElementById("root")).render(
 );
 
 
-// <App value = {{akash: "34"}} >
-//  <div>
-//    Hellow
-//  </div>
-// </App>
+ 
