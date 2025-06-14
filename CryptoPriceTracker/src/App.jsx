@@ -8,7 +8,6 @@ import Features from "./Features";
 import Pricing from "./Pricing";
 import Blog from "./Blog";
 
-
 const App = () => {
   return (
     <div className="app">
@@ -16,11 +15,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/coin/:coinId" element={<Coin />} caseSensitive />
-        <Route path="/Features" element = {<Features/>} caseSensitive/>
-        <Route path="/Pricing" element = {<Pricing/>} caseSensitive/>
-        <Route path="/Blog" element = {<Blog/>} caseSensitive/>
+        <Route path="/Features" element={<Features />} caseSensitive />
+        <Route path="/Pricing" element={<Pricing />} caseSensitive />
+        <Route path="/Blog" element={<Blog />} caseSensitive />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

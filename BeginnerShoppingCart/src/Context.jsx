@@ -31,11 +31,6 @@ const ProductContextProvider = (props)=>{
     price: 599
   },
   {
-    name: "Desk Plant",
-    image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80",
-    price: 399
-  },
-  {
     name: "Bluetooth Speaker",
     image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
     price: 1599
@@ -51,8 +46,6 @@ const ProductContextProvider = (props)=>{
     price: 449
   }
 ];
-
-
 
     const [product, setProduct] = useState([]);
     useEffect(()=>{
