@@ -1,15 +1,39 @@
-import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { ProductContext } from "../Context";
+import { MdDelete } from "react-icons/md";
 
 const SingleProduct = () => {
+  const { productName } = useParams();
+  const { product, setProduct } = useContext(ProductContext);
 
+  if (!product || product.length === 0) {
+    return <div>Loading product...</div>;
+  }
 
-    const {productName} = useParams();
- 
+  const selectedProduct = product.find(
+    (item) => item.name.toLowerCase() === productName.toLowerCase()
+  );
+
+  // console.log(selectedProduct);
+
+  if (!selectedProduct) {
+    return <div>Product not found.</div>;
+  }
 
   return (
-    <div>SingleProduct</div>
-  )
-}
+    <div className="flex flex-col justify-center items-center gap-4 p-5">
+      <div>
+        <img
+          className="rounded-xl shadow-lg border border-gray-200"
+          src={selectedProduct.image}
+          alt={selectedProduct.name}
+        />
+      </div>
+      <div className="text-2xl">{selectedProduct.name}</div>
+      <div className="text-xl">₹{selectedProduct.price}</div>
+    </div>
+  );
+};
 
-export default SingleProduct
+export default SingleProduct;

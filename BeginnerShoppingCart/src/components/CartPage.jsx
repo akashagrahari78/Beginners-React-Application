@@ -1,37 +1,24 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../Context";
 import { MdDelete } from "react-icons/md";
- 
+
 const CartPage = () => {
-
-
-const { productName } = useParams();
-const { product, setProduct } = useContext(ProductContext);
-
- const selectedProduct = product.find((item) => {
-    item.name === product.name;
-  });
-
-
-  if (!selectedProduct) {
-    return <div>Product not found.</div>;
-  }
+  const { cartProduct } = useContext(ProductContext);
+  console.log(cartProduct);
 
   return (
-    <div>
-      <div>
-        <img src= {selectedProduct.image} alt= {selectedProduct.name} />
-      </div>
-      <div>
-        {selectedProduct.name}
-      </div>
-      <div>
-        {selectedProduct.price}
-      </div>
-      <div>
-        <MdDelete />
-      </div>
+    <div className="p-4">
+      <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
+      {cartProduct.length === 0 ? (
+        <div>Your cart is empty.</div>
+      ) : (
+        cartProduct.map((itemName, index) => (
+          <div key={index} className="border p-2 mb-2 rounded-md">
+            {itemName}
+          </div>
+        ))
+      )}
     </div>
   );
 };
