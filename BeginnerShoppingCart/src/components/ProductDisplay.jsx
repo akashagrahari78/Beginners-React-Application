@@ -10,12 +10,12 @@ const ProductDisplay = () => {
     
   const handleAddToCart = (item) => {
     // console.log(e)
-    setCartProduct([...cartProduct, item.name]);
+    setCartProduct([...cartProduct, item]);
     
   };
  
   useEffect(()=>{
-    console.log("Cart Updatad: ", cartProduct)
+    console.log("Cart Updated: ", cartProduct)
   },[cartProduct])
 
   if (product)

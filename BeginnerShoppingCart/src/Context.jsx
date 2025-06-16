@@ -3,7 +3,8 @@ import { createContext, useEffect, useState } from "react";
 export const ProductContext = createContext();
 
 export const ProductContextProvider = (props) => {
-  const products = [
+
+    const products = [
     {
       name: "Classic White T-Shirt",
       image:
@@ -54,16 +55,25 @@ export const ProductContextProvider = (props) => {
     },
   ];
 
-  const [cartProduct, setCartProduct] = useState([]);
+  const [cartProduct, setCartProduct] = useState(()=>{
+     const storedCart = localStorage.getItem("cartItems");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
   const [product, setProduct] = useState([]);
   useEffect(() => {
     setProduct(products);
   }, []);
   // setProduct(products);
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartProduct));
+  }, [cartProduct]);
 
+    const addToCart = (product) => {
+    setCartProduct([...cartProduct, product]);
+  };
   return (
     <ProductContext.Provider
-      value={{ setProduct, product, cartProduct, setCartProduct }}
+      value={{ setProduct, product,addToCart, cartProduct, setCartProduct }}
     >
       {props.children}
     </ProductContext.Provider>

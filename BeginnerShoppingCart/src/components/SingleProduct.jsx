@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 
 const SingleProduct = () => {
   const { productName } = useParams();
-  const { product, setProduct } = useContext(ProductContext);
+  const { product, addToCart } = useContext(ProductContext);
 
   if (!product || product.length === 0) {
     return <div>Loading product...</div>;
@@ -32,6 +32,9 @@ const SingleProduct = () => {
       </div>
       <div className="text-2xl">{selectedProduct.name}</div>
       <div className="text-xl">₹{selectedProduct.price}</div>
+      <button onClick={()=> addToCart(selectedProduct)}>
+        Add to Cart
+      </button>
     </div>
   );
 };

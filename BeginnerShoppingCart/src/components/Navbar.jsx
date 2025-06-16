@@ -1,7 +1,13 @@
-import React from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import React, { useContext } from "react";
+import { FaShoppingCart, FaChevronDown } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { ProductContext } from "../Context";
 
 const Navbar = () => {
+
+  const {cartProduct} = useContext(ProductContext)
+  //  console.log("CartProducts: ", cartProduct)
+
   return (
     <div>
       <div className="flex justify-around items-center p-6 bg-slate-600 text-white text-2xl">
@@ -16,9 +22,26 @@ const Navbar = () => {
           
           </form>
 
-        <div className="bg-green-500 h-[50px] w-[50px] flex items-center justify-center border-2 border-green-700 rounded">
-          <FaShoppingCart size={24} className="text-white" />
-        </div>
+       <Link to="/cart">
+      <div
+        className="
+          flex items-center gap-2
+          bg-green-600
+          border-2 border-green-700
+          rounded-md
+          px-5 py-2
+          shadow
+          hover:bg-green-700
+          transition
+          duration-150
+        "
+        style={{ width: "auto", minWidth: "90px" }}
+      >
+        <FaShoppingCart size={28} className="text-white" />
+        <span className="text-yellow-300 font-bold text-lg">{cartProduct.length}</span>
+         
+      </div>
+    </Link>
       </div>
       {/* <FaShoppingCart /> */}
     </div>
